@@ -1,187 +1,229 @@
 <!DOCTYPE html>
-<html lang="pl-PL">
+<html lang="pl">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Zespół 1 - Programowanie Zepsołowe</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MotzArt</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.4.14/dist/full.min.css"
       rel="stylesheet"
-      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-      crossorigin="anonymous"
+      type="text/css"
     />
-    <script>
-      function loadScript(src) {
-        return new Promise(function (resolve, reject) {
-          var script = document.createElement("script");
-          script.src = src;
-          script.onload = resolve;
-          script.onerror = reject;
-          document.head.appendChild(script);
-        });
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html {
+        scroll-behavior: smooth;
       }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          colors: {
+            primary: "#00a3d7",
 
-      // Ładuj skrypt do odliczania asynchronicznie
-      loadScript(
-        "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-      )
-        .then(function () {
-          // Skrypt do odliczania zostanie za�adowany przed wykonaniem tego bloku
-          var countdownDate = new Date("December 10, 2023 00:00:00").getTime();
-          var countdownInterval = setInterval(function () {
-            var now = new Date().getTime();
-            var timeRemaining = countdownDate - now;
-            var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-            var hours = Math.floor(
-              (timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-            );
-            var minutes = Math.floor(
-              (timeRemaining % (1000 * 60 * 60)) / (1000 * 60)
-            );
-            var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+            secondary: "#8c2f00",
 
-            document.getElementById("countdown").innerHTML =
-              days +
-              " dni " +
-              hours +
-              " godzin " +
-              minutes +
-              " minut " +
-              seconds +
-              " sekund ";
+            accent: "#0000ff",
 
-            if (timeRemaining < 0) {
-              clearInterval(countdownInterval);
-              document.getElementById("countdown").innerHTML = "Stay tuned...";
-            }
-          }, 1000);
-        })
-        .catch(function (error) {
-          console.error("Bład dodawania skryptu:", error);
-        });
+            info: "#00ebff",
+
+            success: "#00ca88",
+
+            warning: "#e1ae00",
+
+            error: "#ff6074",
+          },
+        },
+      };
     </script>
   </head>
-
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">Zespół 1</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="index.html"
-                >Strona Główna</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="spotkania.html">Spotkania</a>
-            </li>
-            <!-- <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link disabled"
-                href="#"
-                tabindex="-1"
-                aria-disabled="true"
-                >Disabled</a
-              >
-            </li> -->
+    <div class="navbar bg-base-100">
+      <div class="navbar-start">
+        <div class="dropdown">
+          <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
+          </div>
+          <ul
+            class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li><a href="index.html">Strona Główna</a></li>
+            <li><a href="spotkania.html">Spotkania</a></li>
+            <li><a href="harmonogram.html">Harmonogram</a></li>
           </ul>
         </div>
+        <a class="btn btn-ghost text-xl" href="index.html">MotzArt</a>
       </div>
-    </nav>
-    <div class="container">
-      <!-- <div class="container-m d-flex justify-content-center">
-        <div class="row" style="padding: 1%">
-          <h1>Zespół 1</h1>
-        </div>
-      </div> -->
-      <div class="container-m d-flex justify-content-center">
-        <div class="row" style="padding: 2%; text-align: center">
-          <h1>Odliczanie:<br /></h1>
-          <h2><span id="countdown"></span><br /></h2>
-          <h3>Do opublikowania pomysłu projektu</h3>
-        </div>
+      <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal px-1">
+          <li><a href="index.html">Strona Główna</a></li>
+          <li><a href="spotkania.html">Spotkania</a></li>
+          <li><a href="harmonogram.html">Harmonogram</a></li>
+        </ul>
       </div>
-      <div class="container-m d-flex justify-content-center">
-        <div class="row" style="padding: 2%">
-          <h1 style="text-align: center">Skład zespołu:<br /></h1>
-          <div class="col-sm">
-            <div class="card m-2">
-              <div class="card-header">Kierownik</div>
-              <div class="card-body">
-                <h5 class="card-title">Kamil Kucharski</h5>
-                <p class="card-text">kkucharski01</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm">
-            <div class="card m-2">
-              <div class="card-header">Sekretarz</div>
-              <div class="card-body">
-                <h5 class="card-title">Michał Przysięny</h5>
-                <p class="card-text">mprzys</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm">
-            <div class="card m-2">
-              <div class="card-header">Programista</div>
-              <div class="card-body">
-                <h5 class="card-title">Piotr Kowalczyk</h5>
-                <p class="card-text">kowalczykp200</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm">
-            <div class="card m-2">
-              <div class="card-header">Programista</div>
-              <div class="card-body">
-                <h5 class="card-title">Mateusz Jachym</h5>
-                <p class="card-text">jachmm</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm">
-            <div class="card m-2">
-              <div class="card-header">Programista</div>
-              <div class="card-body">
-                <h5 class="card-title">Kacper Falkiewicz</h5>
-                <p class="card-text">falken</p>
-              </div>
-            </div>
-          </div>
+      <div class="navbar-end"></div>
+    </div>
+    <div class="hero min-h-screen relative">
+      <video
+        autoplay
+        loop
+        muted
+        class="absolute inset-0 w-full h-full object-cover"
+        style="filter: brightness(0.8)"
+      >
+        <source src="video.mp4" type="video/mp4" />
+        Twoja przeglądarka nie obsługuje tagu video.
+      </video>
+      <div
+        class="text-center hero-content relative z-10 glass rounded-lg"
+        style="padding: 5%"
+      >
+        <div class="max-w-md text-secondary-content">
+          <h1 class="mb-5 text-5xl font-bold text-white">MotzArt</h1>
+          <p class="mb-5 text-white">
+            MotzArt to innowacyjna aplikacja muzyczna, wykorzystująca sztuczną
+            inteligencję do generowania unikalnych melodii na podstawie podanych
+            parametrów, takich jak skala, tonacja i tempo. Dla szybkiego i
+            inspirującego tworzenia muzyki – MotzArt to nowa era w kreatywności
+            dźwiękowej.
+          </p>
+          <a href="#bottom" class="btn btn-lg">Zobacz więcej</a>
         </div>
-      </div>
-      <div class="container d-flex justify-content-center">
-        <div class row="row" style="padding: 2%; width: 100%">
-          <div class="col">
-            <div class="card">
-              <div class="card-header">Opiekun zespołu</div>
-              <div class="card-body">
-                <h5 class="card-title">Szymon Skowroński</h5>
-                <p class="card-text">Firma Iteo</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="container-m d-flex justify-content-center">
-        <a href="kot.html" style="color: white">Kliknij mnie</a>
       </div>
     </div>
+
+    <div id="bottom">
+      <div
+        style="padding: 5%"
+        class="container mx-auto flex items-center justify-center"
+      >
+        <div class="columns-1">
+          <p class="text-3xl text-left">O projekcie</p>
+          <p class="text-xl text-justify">
+            MotzArt to nowatorska aplikacja muzyczna, która wykorzystuje
+            sztuczną inteligencję do generowania melodii. Wystarczy podać skalę,
+            tonację i tempo, a nasza AI stworzy dla Ciebie unikalną kompozycję.
+            Dla profesjonalistów i entuzjastów, MotzArt sprawia, że tworzenie
+            muzyki staje się łatwe i inspirujące. Odkryj kreatywne możliwości z
+            naszą inteligentną aplikacją MotzArt!
+          </p>
+        </div>
+      </div>
+      <div class="container mx-auto flex items-center justify-center">
+        <div class="columns-1">
+          <p style="margin: 5%" class="text-2xl text-center font-bold">
+            Wykorzystywane technologie między innymi:
+          </p>
+          <div class="stats shadow">
+            <div class="stat">
+              <div class="stat-title"></div>
+              <div class="stat-value">React Native</div>
+            </div>
+            <div class="stat">
+              <div class="stat-title"></div>
+              <div class="stat-value">Python</div>
+            </div>
+            <div class="stat">
+              <div class="stat-title"></div>
+              <div class="stat-value">Java</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        style="padding-top: 2%"
+        class="container mx-auto flex items-center justify-center"
+      >
+        <span class="text-xl" style="padding-bottom: 1%">Skład zepsołu:</span>
+      </div>
+      <div class="container mx-auto flex items-center justify-center">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 justify-center"
+        >
+          <div class="flex-shrink-0 w-full">
+            <div class="card bg-primary text-secondary-content h-full">
+              <div class="card-body flex flex-col justify-between">
+                <h2 class="card-title badage">Kierownik</h2>
+                <p>Kamil Kucharski</p>
+                <i>kkucharski01</i>
+              </div>
+            </div>
+          </div>
+          <div class="flex-shrink-0 w-full">
+            <div class="card bg-primary text-secondary-content h-full">
+              <div class="card-body flex flex-col justify-between">
+                <h2 class="card-title">Sekretarz</h2>
+                <p>Michał Przysiężny</p>
+                <i>mprzys</i>
+              </div>
+            </div>
+          </div>
+          <div class="flex-shrink-0 w-full">
+            <div class="card bg-primary text-secondary-content h-full">
+              <div class="card-body flex flex-col justify-between">
+                <h2 class="card-title">Programista</h2>
+                <p>Piotr Kowalczyk</p>
+                <i>kowalczykp200</i>
+              </div>
+            </div>
+          </div>
+          <div class="flex-shrink-0 w-full">
+            <div class="card bg-primary text-secondary-content h-full">
+              <div class="card-body flex flex-col justify-between">
+                <h2 class="card-title">Programista</h2>
+                <p>Mateusz Jachym</p>
+                <i>jachmm</i>
+              </div>
+            </div>
+          </div>
+          <div class="flex-shrink-0 w-full">
+            <div class="card bg-primary text-secondary-content h-full">
+              <div class="card-body flex flex-col justify-between">
+                <h2 class="card-title">Programista</h2>
+                <p>Kacper Falkiewicz</p>
+                <i>falken</i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container mx-auto flex items-center justify-center">
+      <span class="text-xl" style="padding-bottom: 1%">Opiekun Zepsołu</span>
+    </div>
+    <div
+      style="padding-bottom: 5%"
+      class="container mx-auto flex items-center justify-center"
+    >
+      <div class="card bg-primary text-secondary-content h-full">
+        <div class="card-body flex flex-col justify-between">
+          <h2 class="card-title">Szymon Skowroński</h2>
+          <i>Firma Iteo</i>
+        </div>
+      </div>
+    </div>
+    <footer class="footer items-center p-4 bg-neutral text-neutral-content">
+      <aside class="items-center grid-flow-col">
+        <p>Programowanie Zespołowe - Zespół 1</p>
+      </aside>
+      <nav
+        class="grid-flow-col gap-4 md:place-self-center md:justify-self-end"
+      ></nav>
+    </footer>
   </body>
 </html>
